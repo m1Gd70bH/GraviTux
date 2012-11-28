@@ -149,7 +149,7 @@ public class Play extends BasicGameState
 			}
 		}
 
-		/*
+		
 	////move up, when gravity is rotated by 90%
 		if (input.isKeyDown(Input.KEY_UP) || input.isKeyDown(Input.KEY_W))
 		{
@@ -171,7 +171,7 @@ public class Play extends BasicGameState
 				tuxY += speed;
 			}
 		} else
-		*/
+		
 
 		////flip Gravity, but only when touching the ground
 		if ((input.isKeyDown(Input.KEY_SPACE) || input.isKeyDown(Input.KEY_X)) && vSpeed == 0)
