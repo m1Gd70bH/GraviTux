@@ -186,36 +186,36 @@ public class Play extends BasicGameState {
             }
 
         ////flip Gravity, but only when touching the ground and 90°Gravi set
-        /* if ((input.isKeyDown(Input.KEY_SPACE) || input.isKeyDown(Input.KEY_X)) && (vSpeed == 0) && (sGravi)) {
-           tux = standing90;
-           ///reverse gravity
-           if (!revGravi) {
-               revGravi = true;
-               ////is supposed to flip images, worked once
-               stand[0] = stand[0].getFlippedCopy(false, true);
-               walkLeft[0].getFlippedCopy(false, true);
-               walkLeft[1].getFlippedCopy(false, true);
-               walkLeft[2].getFlippedCopy(false, true);
-               walkLeft[3].getFlippedCopy(false, true);
-               walkRight[0].getFlippedCopy(false, true);
-               walkRight[1].getFlippedCopy(false, true);
-               walkRight[2].getFlippedCopy(false, true);
-               walkRight[3].getFlippedCopy(false, true);
-           } else {
-               revGravi = false;
-               ////this is supposed to flip images back
-               stand[0] = stand[0].getFlippedCopy(false, false);
-               walkLeft[0].getFlippedCopy(false, false);
-               walkLeft[1].getFlippedCopy(false, false);
-               walkLeft[2].getFlippedCopy(false, false);
-               walkLeft[3].getFlippedCopy(false, false);
-               walkRight[0].getFlippedCopy(false, false);
-               walkRight[1].getFlippedCopy(false, false);
-               walkRight[2].getFlippedCopy(false, false);
-               walkRight[3].getFlippedCopy(false, false);
-           }
-       }
-        */
+        if ((input.isKeyDown(Input.KEY_SPACE) || input.isKeyDown(Input.KEY_X)) && (vSpeed == 0) && (sGravi)) {
+            tux = standing90;
+            ///reverse gravity
+            if (!revGravi) {
+                revGravi = true;
+                ////is supposed to flip images, worked once
+                stand[0] = stand[0].getFlippedCopy(false, true);
+                walkLeft[0].getFlippedCopy(false, true);
+                walkLeft[1].getFlippedCopy(false, true);
+                walkLeft[2].getFlippedCopy(false, true);
+                walkLeft[3].getFlippedCopy(false, true);
+                walkRight[0].getFlippedCopy(false, true);
+                walkRight[1].getFlippedCopy(false, true);
+                walkRight[2].getFlippedCopy(false, true);
+                walkRight[3].getFlippedCopy(false, true);
+            } else {
+                revGravi = false;
+                ////this is supposed to flip images back
+                stand[0] = stand[0].getFlippedCopy(false, false);
+                walkLeft[0].getFlippedCopy(false, false);
+                walkLeft[1].getFlippedCopy(false, false);
+                walkLeft[2].getFlippedCopy(false, false);
+                walkLeft[3].getFlippedCopy(false, false);
+                walkRight[0].getFlippedCopy(false, false);
+                walkRight[1].getFlippedCopy(false, false);
+                walkRight[2].getFlippedCopy(false, false);
+                walkRight[3].getFlippedCopy(false, false);
+            }
+        }
+
         ////escape key hit for ingame menu
         if (input.isKeyDown(Input.KEY_ESCAPE)) {
             menu = true;
@@ -263,7 +263,7 @@ public class Play extends BasicGameState {
             tux.update(delta);
             tuxY -= vSpeed;
         }
-        /*
+
         ////Gravity 90°
         if ((!(isBlocked(tuxX, tuxY + size + (vSpeed + gravity * delta)) || isBlocked(tuxX + size - 1, tuxY + size + (vSpeed + gravity * delta)))) && (!revGravi) && (sGravi))//fuu
         {
@@ -288,7 +288,7 @@ public class Play extends BasicGameState {
             tux.update(delta);
             tuxY -= vSpeed;
         }
-        */
+
         ////when not falling
         else {
             vSpeed = 0;
@@ -306,10 +306,10 @@ public class Play extends BasicGameState {
         ////storm event
         if (isStorm(tuxX, tuxY)) {
             System.out.println("THE STORM BRINGS YOU 90° GRAVI!");
-            if (revGravi) {
-                revGravi = false;
-            } else if (!revGravi) {
-                revGravi = true;
+            if (sGravi) {
+                sGravi = false;
+            } else if (!sGravi) {
+                sGravi = true;
             }
         }
 

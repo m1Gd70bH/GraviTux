@@ -5,32 +5,28 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class Game extends StateBasedGame
-{
-	public static final String gamename = "GraviTux";
-	public static final int menu = 0;
-	public static final int play = 1;
+public class Game extends StateBasedGame {
+    public static final String gamename = "GraviTux";
+    public static final int menu = 0;
+    public static final int play = 1;
 
-	public Game(String gamename)
-	{
-		super(gamename);
-		this.addState(new Menu(menu));
-		this.addState(new Play(play));
-	}
+    public Game(String gamename) {
+        super(gamename);
+        this.addState(new Menu(menu));
+        this.addState(new Play(play));
+    }
 
-	public void initStatesList(GameContainer gc) throws SlickException
-	{
-		this.getState(menu).init(gc, this);
-		this.getState(play).init(gc, this);
-		this.enterState(play);
-	}
+    public void initStatesList(GameContainer gc) throws SlickException {
+        this.getState(menu).init(gc, this);
+        this.getState(play).init(gc, this);
+        this.enterState(play);
+    }
 
-	public static void main(String[] args) throws SlickException
-	{
-		AppGameContainer appgc;
-		appgc = new AppGameContainer(new Game(gamename));
-		appgc.setDisplayMode(800, 600, false);
-		appgc.setTargetFrameRate(60);
-		appgc.start();
-	}
+    public static void main(String[] args) throws SlickException {
+        AppGameContainer appgc;
+        appgc = new AppGameContainer(new Game(gamename));
+        appgc.setDisplayMode(800, 600, false);
+        appgc.setTargetFrameRate(60);
+        appgc.start();
+    }
 }
