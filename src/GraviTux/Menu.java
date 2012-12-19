@@ -7,43 +7,93 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+//import org.newdawn.slick.Sound;
 
-public class Menu extends BasicGameState {
-    Image playNow;
-    Image exitGame;
+class Menu extends BasicGameState
+{
+    private Image welcome, GraviTux, newGame, resume, highscore, credits, exit, bg;
 
-    public Menu(int state) {
+    public Menu()
+    {
     }
 
-    public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        playNow = new Image("GraviTux/playNow.png");
-        exitGame = new Image("GraviTux/exitGame.png");
+    @Override
+    public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
+    {
+        bg = new Image("GraviTux/menu/BG_v4.png");
+        welcome = new Image("GraviTux/menu/welcome.png");
+        GraviTux = new Image("GraviTux/menu/GraviTux.png");
+        newGame = new Image("GraviTux/menu/new_game.png");
+        resume = new Image("GraviTux/menu/continue.png");
+        highscore = new Image("GraviTux/menu/highscore.png");
+        credits = new Image("GraviTux/menu/credits.png");
+        exit = new Image("GraviTux/menu/exit.png");
     }
 
-    public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        g.drawString("Willkommen bei GraviTux", 294, 150);
-        playNow.draw(294, 200);
-        exitGame.draw(294, 275);
+    @Override
+    public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
+    {
+        bg.draw(0, 0);
+        welcome.draw(205, 15);
+        GraviTux.draw(130, 50);
+        newGame.draw(210, 190);
+        resume.draw(210, 250);
+        highscore.draw(210, 310);
+        credits.draw(210, 370);
+        exit.draw(210, 430);
     }
 
-    public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+    @Override
+    public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
+    {
         int posX = Mouse.getX();
         int posY = Mouse.getY();
         //play now button
-        if ((posX > 294 && posX < 505) && (posY > 349 && posY < 400)) {
-            if (Mouse.isButtonDown(0)) {
+        if ((posX > 210 && posX < 490) && (posY > (600 - 252) && posY < (600 - 190)))
+        {
+            if (Mouse.isButtonDown(0))
+            {
+                sbg.enterState(1);
+
+            }
+        }
+        //continue
+        if ((posX > 210 && posX < 490) && (posY > (600 - 312) && posY < (600 - 250)))
+        {
+            if (Mouse.isButtonDown(0))
+            {
                 sbg.enterState(1);
             }
         }
+        //credits
+        if ((posX > 210 && posX < 490) && (posY > (600 - 432) && posY < (600 - 370)))
+        {
+            if (Mouse.isButtonDown(0))
+            {
+                sbg.enterState(2);
+            }
+        }
+        //highscores
+        if ((posX > 210 && posX < 490) && (posY > (600 - 372) && posY < (600 - 310)))
+        {
+            if (Mouse.isButtonDown(0))
+            {
+                sbg.enterState(3);
+            }
+        }
         //exit game
-        if ((posX > 294 && posX < 505) && (posY > 274 && posY < 325)) {
-            if (Mouse.isButtonDown(0)) {
+        if ((posX > 210 && posX < 490) && (posY > (600 - 492) && posY < (600 - 430)))
+        {
+            if (Mouse.isButtonDown(0))
+            {
                 System.exit(0);
             }
         }
     }
 
-    public int getID() {
+    @Override
+    public int getID()
+    {
         return 0;
     }
 }
